@@ -1,0 +1,10 @@
+shell-integration = zsh
+theme = tokyonight
+background-opacity = 0.9
+#background-blur-radius = 65
+font-size = 10
+font-family = "Hack Nerd Font"
+window-decoration = false
+confirm-close-surface = false
+window-padding-x = 7,12
+window-padding-y = 7,12

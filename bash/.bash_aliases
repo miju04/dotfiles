@@ -1,0 +1,5 @@
+alias vim='nvim'
+alias c='clear'
+alias cd..='cd ..'
+alias ..='cd ..'
+alias weather='function _weather() { curl wttr.in/$1; }; _weather'

@@ -1,0 +1,13 @@
+show=drun
+width=600
+height=400
+
+show_all=false
+allow-images=true
+image_size=25
+no_actions=true
+normal_window=true
+
+
+insensitive=true
+prompt=Search
