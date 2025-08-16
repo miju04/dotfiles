@@ -58,7 +58,8 @@
   },
   "memory": {
     "format": "  {}%",
-    "tooltip": true
+    "tooltip": true,
+    "tooltip-format": "RAM:   {used} / {total} GiB\nSWAP: {swapUsed} / {swapTotal} GiB"
   },
   "temperature": {
     "interval": 10,
