@@ -3,4 +3,3 @@
 -- Add any additional keymaps here
 
 vim.keymap.set("n", "<leader>pv", vim.cmd.Ex, { desc = "Previous Window" })
-vim.keymap.set("n", "<leader>r", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], { desc = "Replace" })
