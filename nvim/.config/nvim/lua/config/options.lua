@@ -3,3 +3,5 @@
 -- Add any additional options here
 
 vim.opt.swapfile = false
+vim.opt.spelllang = { "en_us", "de" }
+vim.opt.winborder = "rounded"
