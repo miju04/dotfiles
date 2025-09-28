@@ -1,5 +1,5 @@
 shell-integration = zsh
-theme = tokyonight
+theme = TokyoNight
 background-opacity = 0.0
 #background-blur-radius = 65
 font-size = 10
