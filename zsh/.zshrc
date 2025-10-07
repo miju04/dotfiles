@@ -6,8 +6,10 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 fi
 
 ## Activate uwsm for Hyprland
-if uwsm check may-start && uwsm select; then
-  exec systemd-cat -t uwsm_start uwsm start default
+if command -v uwsm &> /dev/null; then
+  if uwsm check may-start && uwsm select; then
+    exec systemd-cat -t uwsm_start uwsm start default
+  fi
 fi
 
 # If you come from bash you might have to change your $PATH.
@@ -121,10 +123,25 @@ $ZSH_CUSTOM/aliases.zsh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"# alias ohmyzsh="mate ~/.oh-my-zsh"
 
+if [ -f ~/.bash_aliases ]; then
+    . ~/.bash_aliases
+fi
+
+if [ -f ~/.profile ]; then
+  . ~/.profile
+fi
+
+# Alias batcat to bat if batcat exists
+if command -v batcat &> /dev/null; then
+    alias bat='batcat'
+fi
+
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 PATH="$HOME/.local/bin:$PATH"
+PATH="$HOME/go/bin:$PATH"
+PATH="$PATH:/opt/nvim-linux-x86_64/bin"
 
 # Set up fzf key bindings and fuzzy completion
 source /usr/share/fzf/key-bindings.zsh
@@ -165,12 +182,12 @@ export FZF_ALT_C_COMMAND="fd --type=d --hidden --strip-cwd-prefix --exclude .git
 # - The first argument to the function ($1) is the base path to start traversal
 # - See the source code (completion.{bash,zsh}) for the details.
 _fzf_compgen_path() {
-  fd --hidden --exclude .git . "$1"
+  fd --hidden --follow --exclude ".git" . "$1"
 }
 
 # Use fd to generate the list for directory completion
 _fzf_compgen_dir() {
-  fd --type=d --hidden --exclude .git . "$1"
+  fd --type d --hidden --follow --exclude ".git" . "$1"
 }
 
 export FZF_CTRL_T_OPTS="--preview 'bat -n --color=always --line-range :500 {}'"
@@ -211,21 +228,25 @@ function y() {
 }
 
 # Added by Toolbox App
-export PATH="$PATH:/home/miju/.local/share/JetBrains/Toolbox/scripts"
+export PATH="$PATH:$HOME/.local/share/JetBrains/Toolbox/scripts"
 
-#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="$HOME/.sdkman"
-[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+[ -f ~/.config/scripts/aws-cs-login.sh ] && source ~/.config/scripts/aws-cs-login.sh
 
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+
 # pnpm
-export PNPM_HOME="/home/miju/.local/share/pnpm"
+export PNPM_HOME="$HOME/.local/share/pnpm"
 case ":$PATH:" in
   *":$PNPM_HOME:"*) ;;
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 # pnpm end
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
