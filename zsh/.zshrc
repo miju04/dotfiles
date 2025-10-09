@@ -131,11 +131,6 @@ if [ -f ~/.profile ]; then
   . ~/.profile
 fi
 
-# Alias batcat to bat if batcat exists
-if command -v batcat &> /dev/null; then
-    alias bat='batcat'
-fi
-
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
