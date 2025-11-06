@@ -15,17 +15,18 @@ fi
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
 
-fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
+# fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
 
 # Path to your Oh My Zsh installation.
-export ZSH="$HOME/.oh-my-zsh"
+# export ZSH="$HOME/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time Oh My Zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 
-ZSH_THEME="powerlevel10k/powerlevel10k"
+eval "$(starship init zsh)"
+# ZSH_THEME="powerlevel10k/powerlevel10k"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -87,13 +88,25 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(
-    git
-    zsh-syntax-highlighting
-    zsh-autosuggestions
-)
+# plugins=(
+#     git
+#     zsh-syntax-highlighting
+#     zsh-autosuggestions
+# )
 
-source $ZSH/oh-my-zsh.sh
+if [[ -f '/usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh' ]]; then
+  source '/usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh'
+elif [[ -f '/etc/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh' ]]; then
+  source '/etc/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh'
+fi
+
+if [[ -f '/usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh' ]]; then
+  source '/usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh'
+elif [[ -f '/etc/zsh-autosuggestions/zsh-autosuggestions.zsh' ]]; then
+  source '/etc/zsh-autosuggestions/zsh-autosuggestions.zsh'
+fi
+
+# source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
@@ -116,7 +129,7 @@ fi
 # plugins, and themes. Aliases can be placed here, though Oh My Zsh
 # users are encouraged to define aliases within a top-level file in
 # the $ZSH_CUSTOM folder, with .zsh extension. Examples:
-$ZSH_CUSTOM/aliases.zsh
+# $ZSH_CUSTOM/aliases.zsh
 # - $ZSH_CUSTOM/macos.zsh
 # For a full list of active aliases, run `alias`.
 #
@@ -139,8 +152,7 @@ PATH="$HOME/go/bin:$PATH"
 PATH="$PATH:/opt/nvim-linux-x86_64/bin"
 
 # Set up fzf key bindings and fuzzy completion
-source /usr/share/fzf/key-bindings.zsh
-source /usr/share/fzf/completion.zsh
+source <(fzf --zsh)
 
 # fzf tokyonight theme
 export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS \
