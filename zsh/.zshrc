@@ -117,6 +117,15 @@ fi
 # User configuration
 
 # export MANPATH="/usr/local/man:$MANPATH"
+alias vim='nvim'
+alias c='clear'
+alias update='sudo apt-get update && sudo apt-get upgrade -y'
+alias weather='function _weather() { curl wttr.in/$1; }; _weather'
+alias ls='eza --color=always --grid --git --no-filesize --icons=always --no-time --no-user --no-permissions'
+alias ll='eza --color=always --long --git --icons=always --no-user --no-permissions'
+alias la='eza --color=always --long --all --git --icons=always --no-user --no-permissions'
+alias l='eza --color=always --long --git --icons=always --no-user --no-permissions'
+alias ltra='eza --color=always --long --all --git --icons=always --reverse'
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
