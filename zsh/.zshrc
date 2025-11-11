@@ -94,14 +94,20 @@ eval "$(starship init zsh)"
 #     zsh-autosuggestions
 # )
 
+
+# Use Syntax Highlighting and Autosuggestions if installed
 if [[ -f '/usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh' ]]; then
   source '/usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh'
+elif [[ -f '/usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh' ]]; then
+  source '/usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh'
 elif [[ -f '/etc/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh' ]]; then
   source '/etc/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh'
 fi
 
 if [[ -f '/usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh' ]]; then
   source '/usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh'
+elif [[ -f '/usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh' ]]; then
+  source '/usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh'
 elif [[ -f '/etc/zsh-autosuggestions/zsh-autosuggestions.zsh' ]]; then
   source '/etc/zsh-autosuggestions/zsh-autosuggestions.zsh'
 fi
