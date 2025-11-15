@@ -34,7 +34,6 @@ fi
 
 alias vim='nvim'
 alias c='clear'
-alias update='sudo apt-get update && sudo apt-get upgrade -y'
 alias weather='function _weather() { curl wttr.in/$1; }; _weather'
 alias ls='eza --color=always --grid --git --no-filesize --icons=always --no-time --no-user --no-permissions'
 alias ll='eza --color=always --long --git --icons=always --no-user --no-permissions'
@@ -127,7 +126,6 @@ _fzf_comprun() {
 # ---- Zoxide (better cd) ----
 eval "$(zoxide init zsh)"
 alias cd="z"
-export GCM_CREDENTIAL_STORE="gpg"
 
 
 # Tmux sessionizer
@@ -142,6 +140,8 @@ function y() {
 	fi
 	rm -f -- "$tmp"
 }
+
+export GCM_CREDENTIAL_STORE="gpg"
 
 # Added by Toolbox App
 export PATH="$PATH:$HOME/.local/share/JetBrains/Toolbox/scripts"
