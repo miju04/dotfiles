@@ -1,10 +1,3 @@
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
-
 ## Activate uwsm for Hyprland
 if command -v uwsm &> /dev/null; then
   if uwsm check may-start && uwsm select; then
@@ -62,9 +55,6 @@ fi
 if [ -f ~/.profile ]; then
   . ~/.profile
 fi
-
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 PATH="$HOME/.local/bin:$PATH"
 PATH="$HOME/go/bin:$PATH"
