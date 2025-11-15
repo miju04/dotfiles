@@ -12,6 +12,12 @@ if command -v uwsm &> /dev/null; then
   fi
 fi
 
+# ZSH History
+HISTFILE=~/.zsh_history
+HISTSIZE=100000
+SAVEHIST=100000
+setopt SHARE_HISTORY
+
 
 eval "$(starship init zsh)"
 
