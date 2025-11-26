@@ -1,24 +1,21 @@
 ## Activate uwsm for Hyprland
-if command -v uwsm &> /dev/null; then
+if command -v uwsm &>/dev/null; then
   if uwsm check may-start && uwsm select; then
     exec systemd-cat -t uwsm_start uwsm start default
   fi
 fi
 
+source_this() {
+  if [[ -s "$1" ]]; then
+    . "$1"
+  fi
+}
+
 # ZSH History
-HISTFILE=~/.zsh_history
+HISTFILE="$HOME/.zsh_history"
 HISTSIZE=100000
 SAVEHIST=100000
 setopt SHARE_HISTORY
-
-export MANPAGER='nvim +Man!'
-export GCM_CREDENTIAL_STORE="gpg"
-
-PATH="$HOME/.local/bin:$PATH"
-PATH="$HOME/go/bin:$PATH"
-PATH="$PATH:/opt/nvim-linux-x86_64/bin"
-PATH="$HOME/.cargo/bin:$PATH"
-export PATH
 
 # Preferred editor for local and remote sessions
 if [[ -n $SSH_CONNECTION ]]; then
@@ -27,40 +24,28 @@ else
   export EDITOR='nvim'
 fi
 
-if [ -f ~/.profile ]; then
-  . ~/.profile
-fi
+# Tmux sessionizer
+bindkey -s ^f "$HOME/.config/tmux/tmux-sessionizer.sh\n"
+
+source_this "$HOME/.profile"
 
 eval "$(starship init zsh)"
 eval "$(zoxide init zsh)"
 
-if [ -f "$HOME/.config/fzf/config.sh" ]; then
-  . "$HOME/.config/fzf/config.sh"
-fi
-
-# Tmux sessionizer
-bindkey -s ^f '~/.config/tmux/tmux-sessionizer.sh\n'
+source_this "$HOME/.config/fzf/config.sh"
+source_this "$HOME/.config/scripts/aws-cs-login.sh"
 
 # Use Syntax Highlighting and Autosuggestions if installed
-if [[ -f '/usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh' ]]; then
-  source '/usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh'
-elif [[ -f '/usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh' ]]; then
-  source '/usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh'
-elif [[ -f '/etc/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh' ]]; then
-  source '/etc/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh'
-fi
+source_this "/usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+source_this "/usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+source_this "/etc/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 
-if [[ -f '/usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh' ]]; then
-  source '/usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh'
-elif [[ -f '/usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh' ]]; then
-  source '/usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh'
-elif [[ -f '/etc/zsh-autosuggestions/zsh-autosuggestions.zsh' ]]; then
-  source '/etc/zsh-autosuggestions/zsh-autosuggestions.zsh'
-fi
+source_this "/usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
+source_this "/usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh"
+source_this "/etc/zsh-autosuggestions/zsh-autosuggestions.zsh"
 
 alias vim='nvim'
 alias c='clear'
-alias weather='function _weather() { curl wttr.in/$1; }; _weather'
 alias ls='eza --color=always --grid --git --no-filesize --icons=always --no-time --no-user --no-permissions'
 alias ll='eza --color=always --long --git --icons=always --no-user --no-permissions'
 alias la='eza --color=always --long --all --git --icons=always --no-user --no-permissions'
@@ -68,34 +53,22 @@ alias l='eza --color=always --long --git --icons=always --no-user --no-permissio
 alias ltra='eza --color=always --long --all --git --icons=always --reverse'
 alias cd="z"
 
+weather() {
+  if [[ -n "$1" ]]; then
+    local format="?format=${1}"
+  else
+    local format=""
+  fi
+  local location="${2:-}"
+  curl "wttr.in/${location}${format}"
+}
 
 # Yazi cd into open directoty after closing
 function y() {
-	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
-	yazi "$@" --cwd-file="$tmp"
-	if cwd="$(command cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
-		builtin cd -- "$cwd"
-	fi
-	rm -f -- "$tmp"
+  local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+  yazi "$@" --cwd-file="$tmp"
+  if cwd="$(command cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+    builtin cd -- "$cwd"
+  fi
+  rm -f -- "$tmp"
 }
-
-# Added by Toolbox App
-export PATH="$PATH:$HOME/.local/share/JetBrains/Toolbox/scripts"
-
-[ -f ~/.config/scripts/aws-cs-login.sh ] && source ~/.config/scripts/aws-cs-login.sh
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="$HOME/.sdkman"
-[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
-
-# pnpm
-export PNPM_HOME="$HOME/.local/share/pnpm"
-case ":$PATH:" in
-  *":$PNPM_HOME:"*) ;;
-  *) export PATH="$PNPM_HOME:$PATH" ;;
-esac
-# pnpm end
