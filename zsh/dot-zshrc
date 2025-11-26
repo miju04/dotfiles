@@ -11,9 +11,35 @@ HISTSIZE=100000
 SAVEHIST=100000
 setopt SHARE_HISTORY
 
+export MANPAGER='nvim +Man!'
+export GCM_CREDENTIAL_STORE="gpg"
+
+PATH="$HOME/.local/bin:$PATH"
+PATH="$HOME/go/bin:$PATH"
+PATH="$PATH:/opt/nvim-linux-x86_64/bin"
+PATH="$HOME/.cargo/bin:$PATH"
+export PATH
+
+# Preferred editor for local and remote sessions
+if [[ -n $SSH_CONNECTION ]]; then
+  export EDITOR='vim'
+else
+  export EDITOR='nvim'
+fi
+
+if [ -f ~/.profile ]; then
+  . ~/.profile
+fi
 
 eval "$(starship init zsh)"
+eval "$(zoxide init zsh)"
 
+if [ -f "$HOME/.config/fzf/config.sh" ]; then
+  . "$HOME/.config/fzf/config.sh"
+fi
+
+# Tmux sessionizer
+bindkey -s ^f '~/.config/tmux/tmux-sessionizer.sh\n'
 
 # Use Syntax Highlighting and Autosuggestions if installed
 if [[ -f '/usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh' ]]; then
@@ -40,96 +66,8 @@ alias ll='eza --color=always --long --git --icons=always --no-user --no-permissi
 alias la='eza --color=always --long --all --git --icons=always --no-user --no-permissions'
 alias l='eza --color=always --long --git --icons=always --no-user --no-permissions'
 alias ltra='eza --color=always --long --all --git --icons=always --reverse'
-
-# You may need to manually set your language environment
-# export LANG=en_US.UTF-8
-
-# Preferred editor for local and remote sessions
-if [[ -n $SSH_CONNECTION ]]; then
-  export EDITOR='vim'
-else
-  export EDITOR='nvim'
-fi
-
-if [ -f ~/.profile ]; then
-  . ~/.profile
-fi
-
-PATH="$HOME/.local/bin:$PATH"
-PATH="$HOME/go/bin:$PATH"
-PATH="$PATH:/opt/nvim-linux-x86_64/bin"
-
-# Set up fzf key bindings and fuzzy completion
-source <(fzf --zsh)
-
-# fzf tokyonight theme
-export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS \
-  --highlight-line \
-  --info=inline-right \
-  --ansi \
-  --layout=reverse \
-  --border=none \
-  --color=bg+:#283457 \
-  --color=bg:#16161e \
-  --color=border:#27a1b9 \
-  --color=fg:#c0caf5 \
-  --color=gutter:#16161e \
-  --color=header:#ff9e64 \
-  --color=hl+:#2ac3de \
-  --color=hl:#2ac3de \
-  --color=info:#545c7e \
-  --color=marker:#ff007c \
-  --color=pointer:#ff007c \
-  --color=prompt:#2ac3de \
-  --color=query:#c0caf5:regular \
-  --color=scrollbar:#27a1b9 \
-  --color=separator:#ff9e64 \
-  --color=spinner:#ff007c \
-"
-
-# -- Use fd instead of fzf --
-
-export FZF_DEFAULT_COMMAND="fd --hidden --strip-cwd-prefix --exclude .git"
-export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-export FZF_ALT_C_COMMAND="fd --type=d --hidden --strip-cwd-prefix --exclude .git"
-
-# Use fd (https://github.com/sharkdp/fd) for listing path candidates.
-# - The first argument to the function ($1) is the base path to start traversal
-# - See the source code (completion.{bash,zsh}) for the details.
-_fzf_compgen_path() {
-  fd --hidden --follow --exclude ".git" . "$1"
-}
-
-# Use fd to generate the list for directory completion
-_fzf_compgen_dir() {
-  fd --type d --hidden --follow --exclude ".git" . "$1"
-}
-
-export FZF_CTRL_T_OPTS="--preview 'bat -n --color=always --line-range :500 {}'"
-export FZF_ALT_C_OPTS="--preview 'eza --tree --color=always {} | head -200'"
-
-# Advanced customization of fzf options via _fzf_comprun function
-# - The first argument to the function is the name of the command.
-# - You should make sure to pass the rest of the arguments to fzf.
-_fzf_comprun() {
-  local command=$1
-  shift
-
-  case "$command" in
-    cd)           fzf --preview 'eza --tree --color=always {} | head -200' "$@" ;;
-    export|unset) fzf --preview "eval 'echo $'{}"         "$@" ;;
-    ssh)          fzf --preview 'dig {}'                   "$@" ;;
-    *)            fzf --preview "bat -n --color=always --line-range :500 {}" "$@" ;;
-  esac
-}
-
-# ---- Zoxide (better cd) ----
-eval "$(zoxide init zsh)"
 alias cd="z"
 
-
-# Tmux sessionizer
-bindkey -s ^f '~/.config/tmux/tmux-sessionizer.sh\n'
 
 # Yazi cd into open directoty after closing
 function y() {
@@ -141,13 +79,10 @@ function y() {
 	rm -f -- "$tmp"
 }
 
-export GCM_CREDENTIAL_STORE="gpg"
-
 # Added by Toolbox App
 export PATH="$PATH:$HOME/.local/share/JetBrains/Toolbox/scripts"
 
 [ -f ~/.config/scripts/aws-cs-login.sh ] && source ~/.config/scripts/aws-cs-login.sh
-
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
@@ -164,5 +99,3 @@ case ":$PATH:" in
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 # pnpm end
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
