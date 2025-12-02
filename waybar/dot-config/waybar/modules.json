@@ -50,23 +50,26 @@
     "tooltip-format": "{ifname} via {gwaddr} ",
     "format-linked": "{ifname} (No IP) ",
     "format-disconnected": "Disconnected ⚠",
-    "on-click": "sh ~/scripts/rofi-wifi-menu/rofi-wifi-menu.sh"
+    "on-click": "ghostty --command=impala"
   },
   "cpu": {
     "format": "  {usage}%",
-    "tooltip": true
+    "tooltip": true,
+    "on-click": "ghostty --command=btop"
   },
   "memory": {
     "format": "  {}%",
     "tooltip": true,
-    "tooltip-format": "RAM:   {used} / {total} GiB\nSWAP: {swapUsed} / {swapTotal} GiB"
+    "tooltip-format": "RAM:   {used} / {total} GiB\nSWAP: {swapUsed} / {swapTotal} GiB",
+    "on-click": "ghostty --command=btop"
   },
   "temperature": {
     "interval": 10,
     "hwmon-path": "/sys/devices/platform/coretemp.0/hwmon/hwmon4/temp1_input",
     "critical-threshold": 100,
     "format-critical": " {temperatureC}",
-    "format": " {temperatureC}°C"
+    "format": " {temperatureC}°C",
+    "on-click": "ghostty --command=btop"
   },
   "backlight": {
     "format": "　{percent}%",
