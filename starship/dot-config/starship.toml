@@ -16,7 +16,7 @@ $time\
 [ ](fg:#1d2230)\
 \n$character"""
 
-command_timeout = 1000 # longer timeout due to regular timeouts
+scan_timeout = 100 # longer timeout due to regular timeouts
 
 [os]
 disabled = false
