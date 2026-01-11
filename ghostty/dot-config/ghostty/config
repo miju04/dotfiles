@@ -4,6 +4,7 @@ background-opacity = 0.0
 window-theme = ghostty
 #background-blur-radius = 65
 font-size = 10
+adjust-cell-height = -1
 font-family = "MesloLGS NF"
 window-decoration = false
 confirm-close-surface = false
