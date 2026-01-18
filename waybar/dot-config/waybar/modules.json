@@ -94,7 +94,11 @@
       "",
       "",
       ""
-    ]
+    ],
+    "events": {
+      "on-discharging-warning": "notify-send -u normal -i battery-caution 'Low Battery'",
+      "on-discharging-critical": "notify-send -u critical -i battery-caution 'Very Low Battery'"
+    }
   },
   "clock": {
     "interval": 1,
