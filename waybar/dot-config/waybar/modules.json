@@ -8,12 +8,7 @@
     "disable-scroll": true,
     "all-outputs": true,
     "warp-on-scroll": false,
-    "format": "{name}",
-    "format-icons": {
-      "urgent": "",
-      "active": "",
-      "default": ""
-    }
+    "format": "{name}"
   },
   "idle_inhibitor": {
     "format": "{icon}",
@@ -23,11 +18,11 @@
     }
   },
   "pulseaudio": {
-    "format": "{icon}  {volume}%",
+    "format": "{icon}  {volume}% {format_source}",
     "format-bluetooth": "{icon} {volume}%  {format_source}",
     "format-bluetooth-muted": " {icon} {format_source}",
     "format-muted": " {format_source}",
-    "format-source": " {volume}%",
+    "format-source": "",
     "format-source-muted": "",
     "format-icons": {
       "headphone": "",
@@ -45,12 +40,16 @@
     "on-click": "pavucontrol"
   },
   "network": {
+    "interval": 5,
+    "format-alt": "  {bandwidthUpBytes}  {bandwidthDownBytes}",
     "format-wifi": "   {essid} ({signalStrength}%)",
-    "format-ethernet": "{ipaddr}/{cidr} ",
-    "tooltip-format": "{ifname} via {gwaddr} ",
+    "format-ethernet": "  {bandwidthUpBytes}  {bandwidthDownBytes}",
+    "tooltip-format": "{essid} ({signalStrength}%)  {frequency}GHz\ndevice:\t{ifname}\nip:\t\t{ipaddr}/{cidr}\nvia:\t\t{gwaddr}\nup:\t\t{bandwidthUpBytes}\ndown:\t{bandwidthDownBytes}",
     "format-linked": "{ifname} (No IP) ",
     "format-disconnected": "Disconnected ⚠",
-    "on-click": "ghostty --command=impala"
+    "on-click-right": "ghostty --command=impala",
+    "min-length": 21,
+    "max-length": 21
   },
   "cpu": {
     "format": "  {usage}%",
@@ -60,7 +59,7 @@
   "memory": {
     "format": "  {}%",
     "tooltip": true,
-    "tooltip-format": "RAM:   {used} / {total} GiB\nSWAP: {swapUsed} / {swapTotal} GiB",
+    "tooltip-format": "RAM:   {used:0.1f} / {total:0.1f} GiB\nSWAP: {swapUsed:0.1f} / {swapTotal:0.1f} GiB",
     "on-click": "ghostty --command=btop"
   },
   "temperature": {
@@ -79,15 +78,15 @@
     ]
   },
   "battery": {
+    "interval": 5,
     "states": {
       "warning": 30,
       "critical": 15
     },
     "format": "{icon}  {capacity}%",
-    "format-full": "{icon}  {capacity}%",
     "format-charging": "  {capacity}%",
     "format-plugged": "  {capacity}%",
-    "format-alt": "{time}  {icon}",
+    "format-alt": "{icon}  -{power}W",
     "format-icons": [
       "",
       "",

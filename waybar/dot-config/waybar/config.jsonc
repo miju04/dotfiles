@@ -1,11 +1,8 @@
 // -*- mode: jsonc -*-
 {
-  "layer": "top", // Waybar at top layer
-  "position": "top", // Waybar position (top|bottom|left|right)
-  "height": 30, // Waybar height (to be removed for auto height)
-  // "width": 1280, // Waybar width
-  "spacing": 2, // Gaps between modules (4px)
-  // Choose the order of the modules
+  "layer": "top",
+  "position": "top",
+  "spacing": 2,
   "modules-left": [
     "custom/arch",
     "hyprland/workspaces",
@@ -24,7 +21,6 @@
     "temperature",
     "battery"
   ],
-  //Modules configuration
   "include": [
     "~/.config/waybar/modules.json"
   ]
