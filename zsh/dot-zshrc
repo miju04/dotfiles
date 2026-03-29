@@ -1,6 +1,6 @@
 ## Activate uwsm for Hyprland
 if command -v uwsm &>/dev/null; then
-  if uwsm check may-start && uwsm select; then
+  if uwsm check may-start 1>/dev/null && uwsm select; then
     exec systemd-cat -t uwsm_start uwsm start default
   fi
 fi
@@ -72,3 +72,6 @@ function y() {
   fi
   rm -f -- "$tmp"
 }
+
+# Load Angular CLI autocompletion.
+source <(ng completion script)
