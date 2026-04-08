@@ -9,31 +9,50 @@
 #umask 022
 
 source_this() {
-	if [[ -s "$1" ]]; then
-		. "$1"
-	fi
+  if [[ -s "$1" ]]; then
+    . "$1"
+  fi
+}
+
+add_to_var() {
+  if [[ -n "$2" ]]; then
+    eval "local current=\${$1}"
+    if [[ -z "$current" ]]; then
+      export "$1=$2"
+    else
+      export "$1=$2:$current"
+    fi
+  fi
 }
 
 # if running bash
 if [[ -n "$BASH_VERSION" ]]; then
-	# include .bashrc if it exists
-	source_this "$HOME/.bashrc"
+  # include .bashrc if it exists
+  source_this "$HOME/.bashrc"
 fi
 
+add_to_var "KUBECONFIG" "$HOME/.kube/config"
+add_to_var "KUBECONFIG" "$HOME/.kube/t04.yaml"
+add_to_var "KUBECONFIG" "$HOME/.kube/t21.yaml"
+
 export XDG_RUNTIME_DIR="/run/user/$UID"
-export DBUS_SESSION_BUS_ADDRESS="unix:path=${XDG_RUNTIME_DIR}/bus"
+export XDG_CACHE_HOME="$HOME/.cache"
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_DATA_HOME="$HOME/.local/share"
+export XDG_STATE_HOME="$HOME/.local/state"
+
+add_to_var "DBUS_SESSION_BUS_ADDRESS" "unix:path=${XDG_RUNTIME_DIR}/bus"
 
 export MANPAGER='nvim +Man!'
 export GCM_CREDENTIAL_STORE="gpg"
 
-PATH="$HOME/bin:$PATH"
-PATH="$HOME/.local/bin:$PATH"
-PATH="$HOME/go/bin:$PATH"
-PATH="$HOME/.cargo/bin:$PATH"
-export PATH
+add_to_var "PATH" "$HOME/bin"
+add_to_var "PATH" "$HOME/.local/bin"
+add_to_var "PATH" "$HOME/go/bin"
+add_to_var "PATH" "$HOME/.cargo/bin"
 
 # Added by Toolbox App
-export PATH="$PATH:$HOME/.local/share/JetBrains/Toolbox/scripts"
+add_to_var "PATH" "$HOME/.local/share/JetBrains/Toolbox/scripts"
 
 export NVM_DIR="$HOME/.nvm"
 source_this "$NVM_DIR/nvm.sh"
