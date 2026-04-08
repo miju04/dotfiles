@@ -27,6 +27,10 @@ fi
 # Tmux sessionizer
 bindkey -s ^f "$HOME/.config/tmux/tmux-sessionizer.sh\n"
 
+autoload -Uz edit-command-line
+zle -N edit-command-line
+bindkey '^X^E' edit-command-line
+
 source_this "$HOME/.profile"
 
 eval "$(starship init zsh)"
