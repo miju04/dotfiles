@@ -1,0 +1,8 @@
+require("config.general")
+require("config.keymaps")
+require("config.style")
+require("config.env")
+require("config.input")
+require("config.monitor")
+require("config.windowrules")
+require("config.autostart")

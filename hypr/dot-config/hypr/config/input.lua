@@ -1,0 +1,16 @@
+hl.config({
+	input = {
+		kb_layout = "us",
+		follow_mouse = 0,
+		sensitivity = 0,
+		touchpad = {
+			natural_scroll = true,
+		},
+	},
+
+	cursor = {
+		hide_on_key_press = true,
+	},
+})
+
+hl.gesture({ fingers = 3, direction = "horizontal", action = "workspace" })
