@@ -6,6 +6,9 @@ vim.opt.swapfile = false
 vim.opt.spelllang = { "en_us", "de" }
 vim.opt.winborder = "rounded"
 
+vim.o.list = true
+vim.o.listchars = "tab:» ,lead:•,trail:•"
+
 vim.o.clipboard = ""
 if vim.fn.has("wsl") == 1 and vim.fn.executable("win32yank.exe") == 1 then
   vim.g.clipboard = {
