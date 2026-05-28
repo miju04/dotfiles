@@ -6,7 +6,8 @@ vim.opt.swapfile = false
 vim.opt.spelllang = { "en_us", "de" }
 vim.opt.winborder = "rounded"
 
-if vim.fn.executable("win32yank.exe") == 1 then
+vim.o.clipboard = ""
+if vim.fn.has("wsl") == 1 and vim.fn.executable("win32yank.exe") == 1 then
   vim.g.clipboard = {
     name = "win32yank-wsl",
     copy = {
@@ -17,6 +18,6 @@ if vim.fn.executable("win32yank.exe") == 1 then
       ["+"] = "win32yank.exe -o --lf",
       ["*"] = "win32yank.exe -o --lf",
     },
-    cache_enabled = true,
+    cache_enabled = 0,
   }
 end
