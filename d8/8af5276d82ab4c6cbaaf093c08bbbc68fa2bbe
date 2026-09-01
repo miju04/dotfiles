@@ -1,0 +1,14 @@
+nvim/dot-config/nvim/lazy-lock.json
+  h_88f93c8f0f7def 3,8,19,32,39-40,42,61
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.1",
+  "base_commit_sha": "d88af5276d82ab4c6cbaaf093c08bbbc68fa2bbe",
+  "prompts": {},
+  "humans": {
+    "h_88f93c8f0f7def": {
+      "author": "Miká Juznik <77588816+miju04@users.noreply.github.com>"
+    }
+  }
+}
