@@ -1,0 +1,29 @@
+tmux/dot-config/tmux/tmux-sessionizer.sh
+  s_63624aca8d8dd2::t_e9563626499d9d 12-18
+  s_74e6388498938b::t_173408c357f37d 27-31,35,37
+  s_63624aca8d8dd2::t_d3a968a2ff487e 9-11
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.1",
+  "base_commit_sha": "176e130368190f3558236039ca011d9f455e9c64",
+  "prompts": {},
+  "sessions": {
+    "s_63624aca8d8dd2": {
+      "agent_id": {
+        "tool": "opencode",
+        "id": "ses_fbca178aaffebTCIfjX5HCJAv5",
+        "model": "unknown"
+      },
+      "human_author": "Miká Juznik <77588816+miju04@users.noreply.github.com>"
+    },
+    "s_74e6388498938b": {
+      "agent_id": {
+        "tool": "opencode",
+        "id": "ses_056a75fc6ffe1f27wDHMQQjvp0",
+        "model": "unknown"
+      },
+      "human_author": "Miká Juznik <77588816+miju04@users.noreply.github.com>"
+    }
+  }
+}
