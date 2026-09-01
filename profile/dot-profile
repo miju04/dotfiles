@@ -33,7 +33,13 @@ fi
 
 add_to_var "KUBECONFIG" "$HOME/.kube/config"
 add_to_var "KUBECONFIG" "$HOME/.kube/t04.yaml"
+add_to_var "KUBECONFIG" "$HOME/.kube/t14.yaml"
 add_to_var "KUBECONFIG" "$HOME/.kube/t21.yaml"
+add_to_var "KUBECONFIG" "$HOME/.kube/p14.yaml"
+add_to_var "KUBECONFIG" "$HOME/.kube/p21.yaml"
+add_to_var "KUBECONFIG" "$HOME/.kube/p3241.yaml"
+add_to_var "KUBECONFIG" "$HOME/.kube/kgateway-poc.yaml"
+add_to_var "KUBECONFIG" "$HOME/.kube/envoy-poc.yaml"
 
 export XDG_RUNTIME_DIR="/run/user/$UID"
 export XDG_CACHE_HOME="$HOME/.cache"
