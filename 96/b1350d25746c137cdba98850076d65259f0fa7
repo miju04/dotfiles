@@ -1,0 +1,19 @@
+nvim/dot-config/nvim/lazy-lock.json
+  s_73804a604b3805::t_84438fe7a5a62a 2-3,6-8,11-12,17,19,21-29,31-33,36,39-44,50,56,60-63
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.1",
+  "base_commit_sha": "96b1350d25746c137cdba98850076d65259f0fa7",
+  "prompts": {},
+  "sessions": {
+    "s_73804a604b3805": {
+      "agent_id": {
+        "tool": "opencode",
+        "id": "ses_fe0545aa2ffe3uU09q7aNpCu0M",
+        "model": "unknown"
+      },
+      "human_author": "Miká Juznik <77588816+miju04@users.noreply.github.com>"
+    }
+  }
+}
