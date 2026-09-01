@@ -1,0 +1,14 @@
+profile/dot-profile
+  h_88f93c8f0f7def 36,38-42
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.1",
+  "base_commit_sha": "44081117552209d5a8e988e94ac23b1d64b8d0a3",
+  "prompts": {},
+  "humans": {
+    "h_88f93c8f0f7def": {
+      "author": "Miká Juznik <77588816+miju04@users.noreply.github.com>"
+    }
+  }
+}
