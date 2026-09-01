@@ -1,0 +1,19 @@
+starship/dot-config/starship.toml
+  s_8d19064d0c859c::t_159d1659c247a3 19-20
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.1",
+  "base_commit_sha": "d9f8ef7778b599c553eed7a5219e5fd2f0eefe6b",
+  "prompts": {},
+  "sessions": {
+    "s_8d19064d0c859c": {
+      "agent_id": {
+        "tool": "opencode",
+        "id": "ses_ff45d64a2ffeWjwbUEs3EUrEEK",
+        "model": "unknown"
+      },
+      "human_author": "Miká Juznik <77588816+miju04@users.noreply.github.com>"
+    }
+  }
+}
