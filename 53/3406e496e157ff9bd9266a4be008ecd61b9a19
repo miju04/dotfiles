@@ -1,0 +1,19 @@
+profile/dot-profile
+  s_ad8c807ca8c9ab::t_4d2c02999e8b94 28-35,42-43
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.1",
+  "base_commit_sha": "533406e496e157ff9bd9266a4be008ecd61b9a19",
+  "prompts": {},
+  "sessions": {
+    "s_ad8c807ca8c9ab": {
+      "agent_id": {
+        "tool": "opencode",
+        "id": "ses_f995f6f31ffenUIEZZ8JgG6O6W",
+        "model": "unknown"
+      },
+      "human_author": "Miká Juznik <77588816+miju04@users.noreply.github.com>"
+    }
+  }
+}
