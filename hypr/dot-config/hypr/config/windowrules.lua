@@ -92,17 +92,15 @@ hl.window_rule({
 	float = true,
 })
 
-hl.window_rule({
-	name = "floating-focus",
-	match = {
-		float = true,
-	},
-
-	stay_focused = true,
-	no_follow_mouse = true,
-	size = { "monitor_w*0.8", "monitor_h*0.8" },
-	center = true,
-})
+-- hl.window_rule({
+-- 	name = "floating-focus",
+-- 	match = {
+-- 		float = true,
+-- 	},
+--
+-- 	size = { "monitor_w*0.8", "monitor_h*0.8" },
+-- 	center = true,
+-- })
 
 hl.layer_rule({
 	name = "blur-waybar",
@@ -111,4 +109,14 @@ hl.layer_rule({
 	},
 
 	blur = true,
+})
+
+hl.layer_rule({
+	name = "blur-rofi",
+	match = {
+		namespace = "rofi",
+	},
+
+	blur = true,
+	ignore_alpha = 0.5,
 })
