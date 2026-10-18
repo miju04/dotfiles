@@ -1,9 +1,11 @@
 * {
-    bg: rgba(22, 22, 30, 0.50);
-    bg-solid: #16161e;
+    bg: rgba(22, 22, 30, 0.70);
+    bg-solid: rgba(22, 22, 30, 0.90);
     bg-highlight: #292e42;
     selection: #283457;
     border-color: #3b4261;
+
+    font: "MesloLGS Nerd Font 11";
 
     fg: #c0caf5;
     fg-dark: #a9b1d6;
@@ -14,6 +16,8 @@
     magenta: #bb9af7;
     green: #9ece6a;
     red: #f7768e;
+    orange: #ff9e64;
+    orange-bold: bold #ff9e64;
 
     selected-fg: #15161e;
 
@@ -121,7 +125,7 @@ element-text {
     background-color: inherit;
     color: inherit;
     vertical-align: 0.5;
-    highlight: bold #ff9e64;
+    highlight: @orange-bold;
 }
 
 element-icon {

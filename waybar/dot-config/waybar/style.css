@@ -1,7 +1,7 @@
-@define-color bg          rgba(0, 0, 8, .7);
-@define-color bg-solid    rgba(0, 0, 8, .9);
-@define-color hover       rgba(26, 27, 38, .9);
-@define-color ws-active   #242430;
+@define-color bg          rgba(22, 22, 30, .7);
+@define-color bg-solid    rgba(22, 22, 30, .9);
+@define-color hover       #292e42;
+@define-color ws-active   #283457;
 
 @define-color fg          #c0caf5;
 @define-color accent      #7aa2f7;
