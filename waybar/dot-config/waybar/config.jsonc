@@ -3,8 +3,11 @@
   "layer": "top",
   "position": "top",
   "spacing": 2,
+  "reload_style_on_change": true,
   "modules-left": [
     "custom/arch",
+    "hyprland/submap",
+    "systemd-failed-units",
     "hyprland/workspaces",
     "hyprland/window"
   ],
@@ -13,12 +16,9 @@
   ],
   "modules-right": [
     "idle_inhibitor",
-    "pulseaudio",
-    "backlight",
+    "wireplumber",
     "network",
-    "memory",
-    "cpu",
-    "temperature",
+    "group/hardware",
     "battery"
   ],
   "include": [
