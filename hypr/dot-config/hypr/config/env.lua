@@ -1,5 +1,5 @@
 hl.env("GDK_SCALE", "2")
-hl.env("XCURSOR_SIZE", "32")
+hl.env("XCURSOR_SIZE", "20")
 hl.env("HYPRCURSOR_SIZE", "20")
 
 hl.env("GDK_BACKEND", "wayland,x11,*")
