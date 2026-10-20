@@ -3,6 +3,7 @@ hl.env("XCURSOR_SIZE", "20")
 hl.env("HYPRCURSOR_SIZE", "20")
 
 hl.env("GDK_BACKEND", "wayland,x11,*")
+hl.env("GDK_WAYLAND_DISABLE", "ext_background_effect_manager_v1")
 hl.env("QT_QPA_PLATFORM", "wayland;xcb")
 hl.env("QT_STYLE_OVERRIDE", "kvantum")
 hl.env("SDL_VIDEODRIVER", "wayland")
