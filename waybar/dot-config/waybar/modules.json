@@ -32,9 +32,11 @@
     "drawer": {
       "transition-duration": 400,
       "children-class": "hardware-child",
-      "transition-left-to-right": false
+      "transition-left-to-right": false,
+      "click-to-reveal": true
     },
     "modules": [
+      "battery",
       "cpu",
       "memory",
       "temperature",
@@ -47,6 +49,29 @@
     "warp-on-scroll": false,
     "format": "{name}"
   },
+  "bluetooth": {
+    "format": "󰂲",
+    "format-icons": [
+      "󰤾",
+      "󰤿",
+      "󰥀",
+      "󰥁",
+      "󰥂",
+      "󰥃",
+      "󰥄",
+      "󰥅",
+      "󰥆",
+      "󰥈"
+    ],
+    "format-on": "󰂯",
+    "format-connected": "󰂱 {device_alias}",
+    "format-connected-battery": "{device_alias} {icon}",
+    "tooltip-format": "{controller_alias}\n{num_connections} connected",
+    "tooltip-format-connected": "{controller_alias}\n{num_connections} connected\n\n{device_enumerate}",
+    "tooltip-format-enumerate-connected": "{device_alias}  {device_address}",
+    "tooltip-format-enumerate-connected-battery": "{device_alias} {device_battery_percentage}%  {device_address}",
+    "on-click": "ghostty --command=bluetui"
+  },
   "idle_inhibitor": {
     "format": "{icon}",
     "format-icons": {
@@ -56,15 +81,13 @@
   },
   "wireplumber": {
     "format": "{icon} {volume}% {format_source}",
-    "format-bluetooth": "{icon} {volume}%  {format_source}",
-    "format-bluetooth-muted": "󰖁 {icon} {format_source}",
+    "format-bluetooth": "{icon} {volume}% 󰂯 {format_source}",
+    "format-bluetooth-muted": "󰖁 {icon} 󰂯 {format_source}",
     "format-muted": "󰖁 {format_source}",
     "format-source": "",
-    "format-source-muted": "",
+    "format-source-muted": "󰍭",
     "format-icons": {
       "headphone": "",
-      "hands-free": "",
-      "headset": "",
       "portable": "",
       "car": "",
       "default": [
@@ -77,12 +100,20 @@
   },
   "network": {
     "interval": 5,
-    "format-alt": "  {bandwidthUpBytes:>}  {bandwidthDownBytes:>}",
-    "format-wifi": "  {essid:5.15} ({signalStrength}%)",
-    "format-ethernet": "  {bandwidthUpBytes:>}  {bandwidthDownBytes:>}",
-    "tooltip-format": "{essid} ({signalStrength}%)  {frequency}GHz\ndevice:\t{ifname}\nip:\t\t{ipaddr}/{cidr}\nvia:\t\t{gwaddr}\nup:\t\t{bandwidthUpBytes}\ndown:\t{bandwidthDownBytes}",
+    "format-alt": "{icon} {bandwidthUpBytes:>}  {bandwidthDownBytes:>} ",
+    "format-wifi": "{icon} {essid:5.15}",
+    "format-ethernet": "󰈀 {bandwidthUpBytes:>}  {bandwidthDownBytes:>} ",
+    "tooltip-format-wifi": "{essid} ({signalStrength}%)  {frequency}GHz\ndevice:\t{ifname}\nip:\t\t{ipaddr}/{cidr}\nvia:\t\t{gwaddr}\nup:\t\t{bandwidthUpBytes}\ndown:\t\t{bandwidthDownBytes}",
+    "tooltip-format": "{essid} \ndevice:\t{ifname}\nip:\t\t{ipaddr}/{cidr}\nvia:\t\t{gwaddr}\nup:\t\t{bandwidthUpBytes}\ndown:\t\t{bandwidthDownBytes}",
     "format-linked": "{ifname} (No IP) ",
-    "format-disconnected": "Disconnected ⚠",
+    "format-disconnected": "󰤮",
+    "format-icons": [
+      "󰤫",
+      "󰤟",
+      "󰤢",
+      "󰤥",
+      "󰤨"
+    ],
     "on-click-right": "ghostty --command=impala"
   },
   "cpu": {
@@ -100,16 +131,25 @@
     "interval": 10,
     "hwmon-path-abs": "/sys/devices/pci0000:00/0000:00:18.3/hwmon",
     "input-filename": "temp1_input",
-    "critical-threshold": 100,
-    "format-critical": " {temperatureC}",
+    "critical-threshold": 95,
+    "format-critical": " {temperatureC}°C",
     "format": " {temperatureC}°C",
     "on-click": "ghostty --command=btop"
   },
   "backlight": {
-    "format": " {percent}%",
+    "format": "{icon}",
+    "tooltip-format": "{percent}%",
     "format-icons": [
-      "",
-      ""
+      "󱩎",
+      "󱩏",
+      "󱩐",
+      "󱩑",
+      "󱩒",
+      "󱩓",
+      "󱩔",
+      "󱩕",
+      "󱩖",
+      "󰛨"
     ]
   },
   "battery": {
@@ -118,17 +158,40 @@
       "warning": 30,
       "critical": 15
     },
-    "format": "{icon} {capacity}%",
+    "format": "{capacity}% {icon}",
     "format-charging": " {capacity}%",
     "format-plugged": " {capacity}%",
-    "format-alt": "{icon} -{power}W",
-    "format-icons": [
-      "",
-      "",
-      "",
-      "",
-      ""
-    ],
+    "format-alt": "-{power}W {icon}",
+    "format-alt-click": "click-right",
+    "format-icons": {
+      "default": [
+        "󰂎",
+        "󰁺",
+        "󰁻",
+        "󰁼",
+        "󰁽",
+        "󰁾",
+        "󰁿",
+        "󰂀",
+        "󰂁",
+        "󰂂",
+        "󰁹"
+      ],
+      "charging": [
+        "󰢟",
+        "󰢜",
+        "󰂆",
+        "󰂇",
+        "󰂈",
+        "󰢝",
+        "󰂉",
+        "󰢞",
+        "󰂊",
+        "󰂋",
+        "󰂅"
+      ]
+    },
+    "tooltip-format": "Battery information\nCapacity:\t{capacity}%\nPower:\t\t{power}W\nTime:\t\t{time}\nCycles:\t\t{cycles}\nHealth:\t\t{health}%",
     "events": {
       "on-discharging-warning": "notify-send -u normal -i battery-caution 'Low Battery'",
       "on-discharging-critical": "notify-send -u critical -i battery-caution 'Very Low Battery'"
@@ -137,7 +200,29 @@
   "clock": {
     "interval": 1,
     "format": "{:%H:%M | %e %b}",
-    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-    "format-alt": "{:%H:%M:%S}"
+    "calendar": {
+      "mode": "year",
+      "mode-mon-col": 3,
+      "weeks-pos": "left",
+      "iso8601": true,
+      "on-scroll": 1,
+      "on-click-right": "mode",
+      "format": {
+        "months": "<span color='#bb9af7'><b>{}</b></span>",
+        "days": "<span color='#c0caf5'>{}</span>",
+        "weeks": "<span color='#ff9e64'>{}</span>",
+        "weekdays": "<span color='#7dcfff'><b>{}</b></span>",
+        "today": "<span color='#f7768e'><b><u>{}</u></b></span>"
+      }
+    },
+    "tooltip-format": "<tt><small>{calendar}</small></tt>",
+    "format-alt": "{:%H:%M:%S}",
+    "actions": {
+      "on-click-right": "mode",
+      "on-click-forward": "tz_up",
+      "on-click-backward": "tz_down",
+      "on-scroll-up": "shift_up",
+      "on-scroll-down": "shift_down"
+    }
   }
 }

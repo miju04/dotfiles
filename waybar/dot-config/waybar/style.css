@@ -9,6 +9,9 @@
 @define-color red         #f7768e;
 @define-color orange      #ff9e64;
 @define-color amber       #e0af68;
+@define-color green       #9ece6a;
+@define-color cyan        #7dcfff;
+@define-color magenta     #bb9af7;
 
 * {
     /* MesloLGS Nerd Font is required to be installed for icons */
@@ -73,6 +76,7 @@ tooltip label {
 #backlight,
 #network,
 #wireplumber,
+#bluetooth,
 #idle_inhibitor,
 #window,
 #submap,
@@ -89,8 +93,23 @@ tooltip label {
 #backlight:hover,
 #network:hover,
 #wireplumber:hover,
+#bluetooth:hover,
 #idle_inhibitor:hover {
     background: @hover;
+}
+
+#bluetooth.disabled,
+#bluetooth.off,
+#bluetooth.no-controller {
+    color: alpha(@fg, .4);
+}
+
+#bluetooth.connected {
+    color: @accent;
+}
+
+#bluetooth.discovering {
+    color: @amber;
 }
 
 #window {

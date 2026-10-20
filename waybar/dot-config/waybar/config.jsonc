@@ -17,9 +17,9 @@
   "modules-right": [
     "idle_inhibitor",
     "wireplumber",
+    "bluetooth",
     "network",
-    "group/hardware",
-    "battery"
+    "group/hardware"
   ],
   "include": [
     "~/.config/waybar/modules.json"
