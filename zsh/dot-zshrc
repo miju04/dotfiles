@@ -24,8 +24,15 @@ else
   export EDITOR='nvim'
 fi
 
-# Tmux sessionizer
-bindkey -s ^f "$HOME/.config/tmux/tmux-sessionizer.sh\n"
+# Tmux sessionizer (in a popup when inside tmux)
+tmux-sessionizer() {
+  if [[ -n $TMUX ]]; then
+    tmux display-popup -E -w 80% -h 60% "$HOME/.config/tmux/tmux-sessionizer.sh"
+  else
+    "$HOME/.config/tmux/tmux-sessionizer.sh"
+  fi
+}
+bindkey -s ^f "tmux-sessionizer\n"
 
 autoload -Uz edit-command-line
 zle -N edit-command-line

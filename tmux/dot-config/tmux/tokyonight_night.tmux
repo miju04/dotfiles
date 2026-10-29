@@ -10,6 +10,10 @@ set -g message-command-style "fg=#7aa2f7,bg=#3b4261"
 set -g pane-border-style "fg=#3b4261"
 set -g pane-active-border-style "fg=#7aa2f7"
 
+set -g popup-style "fg=#c0caf5,bg=#16161e"
+set -g popup-border-style "fg=#7aa2f7,bg=default"
+set -g popup-border-lines "rounded"
+
 set -g status "on"
 set -g status-justify "left"
 
