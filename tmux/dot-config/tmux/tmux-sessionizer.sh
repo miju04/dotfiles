@@ -1,17 +1,36 @@
 #!/usr/bin/env bash
 
+cd "$HOME" || exit 1
+
 if [[ $# -eq 1 ]]; then
-  selected=$1
+  selected=${1%/}
 else
   directories=(
     "$HOME/dev/"
     "$HOME/dotfiles/"
   )
 
-  selected=$(fd -HI -t d '^\.git$' "${directories[@]}" --max-depth 5 --exclude 'dot*' \
-    --exec dirname {} | while IFS= read -r directory; do
-      printf '%s\n' "${directory#"$HOME"/}"
-    done | fzf)
+  declare -A running
+  while IFS= read -r path; do
+    running[$path]=1
+  done < <(tmux list-sessions -F '#{session_path}' 2>/dev/null)
+
+  # Each line is "<path>\t<label>": fzf shows the label, the script reads the path
+  active=()
+  inactive=()
+  while IFS= read -r directory; do
+    relative=${directory#"$HOME"/}
+    if [[ -n ${running[$directory]} ]]; then
+      active+=("$relative"$'\t\e[32m●\e[0m '"$relative")
+    else
+      inactive+=("$relative"$'\t  '"$relative")
+    fi
+  done < <(fd -HI -t d '^\.git$' "${directories[@]}" --max-depth 5 --exclude 'dot*' --exec dirname {})
+
+  selected=$(printf '%s\n' "${active[@]}" "${inactive[@]}" |
+    fzf --ansi --delimiter='\t' --with-nth=2 \
+      --preview 'eza -1 --icons=always --group-directories-first --color=always "$HOME"/{1}' |
+    cut -f1)
 
   if [[ -n $selected ]]; then
     selected="$HOME/$selected"
@@ -22,17 +41,18 @@ if [[ -z $selected ]]; then
   exit 0
 fi
 
-selected_name=$(basename "$selected" | tr . _)
+name=${selected##*/}
+session=${name//./_}
 
-if ! tmux has-session -t="$selected_name" 2>/dev/null; then
-  tmux new-session -ds "$selected_name" -n nvim -c "$selected" nvim
-  tmux new-window -t "$selected_name" -n opencode -c "$selected" opencode
-  tmux new-window -t "$selected_name" -c "$selected"
-  tmux select-window -t "$selected_name:zsh"
+if ! tmux has-session -t="$session" 2>/dev/null; then
+  tmux new-session -ds "$session" -n nvim -c "$selected" nvim
+  tmux new-window -t "$session" -n opencode -c "$selected" opencode
+  tmux new-window -t "$session" -c "$selected"
+  tmux select-window -t "$session:zsh"
 fi
 
 if [[ -z $TMUX ]]; then
-  tmux attach -t "$selected_name"
+  tmux attach -t "$session"
 else
-  tmux switch-client -t "$selected_name"
+  tmux switch-client -t "$session"
 fi
