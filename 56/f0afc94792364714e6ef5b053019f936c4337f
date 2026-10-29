@@ -1,0 +1,14 @@
+tmux/dot-config/tmux/tmux-sessionizer.sh
+  h_88f93c8f0f7def 3-4,6,13-33,44-45,47-51,55,57
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.6",
+  "base_commit_sha": "56f0afc94792364714e6ef5b053019f936c4337f",
+  "prompts": {},
+  "humans": {
+    "h_88f93c8f0f7def": {
+      "author": "Miká Juznik <77588816+miju04@users.noreply.github.com>"
+    }
+  }
+}
