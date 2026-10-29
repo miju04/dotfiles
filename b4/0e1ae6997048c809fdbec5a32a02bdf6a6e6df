@@ -1,0 +1,18 @@
+tmux/dot-config/tmux/tokyonight_night.tmux
+  h_88f93c8f0f7def 13-16
+tmux/dot-tmux.conf
+  h_88f93c8f0f7def 10-11,15,18,23-24,32,49-57
+zsh/dot-zshrc
+  h_88f93c8f0f7def 27-35
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.6",
+  "base_commit_sha": "b40e1ae6997048c809fdbec5a32a02bdf6a6e6df",
+  "prompts": {},
+  "humans": {
+    "h_88f93c8f0f7def": {
+      "author": "Miká Juznik <77588816+miju04@users.noreply.github.com>"
+    }
+  }
+}
