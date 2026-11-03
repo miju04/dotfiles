@@ -10,6 +10,12 @@ vim.o.list = true
 vim.o.listchars = "tab:» ,lead:•,trail:•"
 
 vim.o.clipboard = ""
+
+vim.treesitter.language.register("yaml", "yml")
+
+-- On NixOS, tools come from Nix; elsewhere Mason installs them.
+vim.g.nixos = vim.uv.fs_stat("/etc/NIXOS") ~= nil
+
 if vim.fn.has("wsl") == 1 and vim.fn.executable("win32yank.exe") == 1 then
   vim.g.clipboard = {
     name = "win32yank-wsl",
