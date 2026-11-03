@@ -1,0 +1,14 @@
+nvim/dot-config/nvim/lua/plugins/java-google-format.lua
+  h_88f93c8f0f7def 3-12
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.6",
+  "base_commit_sha": "2944593d29aee47535944279fb7990e7e9182dff",
+  "prompts": {},
+  "humans": {
+    "h_88f93c8f0f7def": {
+      "author": "Miká Juznik <77588816+miju04@users.noreply.github.com>"
+    }
+  }
+}
