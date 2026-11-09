@@ -1,0 +1,19 @@
+nvim/dot-config/nvim/lua/plugins/markdown.lua
+  s_6b2efc521c7e67::t_abd1c68308c61c 45-49
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.7",
+  "base_commit_sha": "3d0c0feaa2669fdab02b4705d73871ef5d8b5bc3",
+  "prompts": {},
+  "sessions": {
+    "s_6b2efc521c7e67": {
+      "agent_id": {
+        "tool": "opencode",
+        "id": "ses_e3f632fc2ffeMm0VwX3L2Yfm3J",
+        "model": "unknown"
+      },
+      "human_author": "Miká Juznik <77588816+miju04@users.noreply.github.com>"
+    }
+  }
+}
