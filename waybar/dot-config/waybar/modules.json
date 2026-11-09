@@ -70,7 +70,7 @@
     "tooltip-format-connected": "{controller_alias}\n{num_connections} connected\n\n{device_enumerate}",
     "tooltip-format-enumerate-connected": "{device_alias}  {device_address}",
     "tooltip-format-enumerate-connected-battery": "{device_alias} {device_battery_percentage}%  {device_address}",
-    "on-click": "ghostty --command=bluetui"
+    "on-click": "uwsm app -- ghostty --command=bluetui"
   },
   "idle_inhibitor": {
     "format": "{icon}",
@@ -114,18 +114,18 @@
       "󰤥",
       "󰤨"
     ],
-    "on-click-right": "ghostty --command=impala"
+    "on-click-right": "uwsm app -- ghostty --command=impala"
   },
   "cpu": {
     "format": " {usage}%",
     "tooltip": true,
-    "on-click": "ghostty --command=btop"
+    "on-click": "uwsm app -- ghostty --command=btop"
   },
   "memory": {
     "format": " {}%",
     "tooltip": true,
     "tooltip-format": "RAM:   {used:0.1f} / {total:0.1f} GiB\nSWAP: {swapUsed:0.1f} / {swapTotal:0.1f} GiB",
-    "on-click": "ghostty --command=btop"
+    "on-click": "uwsm app -- ghostty --command=btop"
   },
   "temperature": {
     "interval": 10,
@@ -134,7 +134,7 @@
     "critical-threshold": 95,
     "format-critical": " {temperatureC}°C",
     "format": " {temperatureC}°C",
-    "on-click": "ghostty --command=btop"
+    "on-click": "uwsm app -- ghostty --command=btop"
   },
   "backlight": {
     "format": "{icon}",
