@@ -42,8 +42,11 @@ return {
     dependencies = { "selimacerbas/kitehost.nvim" },
     cmd = "MdKite",
     keys = {
-      { "<leader>cp", "<cmd>MdKite toggle<cr>", ft = "markdown", desc = "Markdown Preview" },
+      { "<leader>cp", "<cmd>MdKite start<cr>", ft = "markdown", desc = "Markdown Preview" },
     },
-    opts = {},
+    opts = {
+      open_browser = false,
+      hooks = { on_start = vim.ui.open },
+    },
   },
 }
