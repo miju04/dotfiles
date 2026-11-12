@@ -1,0 +1,14 @@
+.stowrc
+  h_88f93c8f0f7def 1-3
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.7",
+  "base_commit_sha": "4a7acc41f092a0fcb9c77fec8aa5906a0618c4c4",
+  "prompts": {},
+  "humans": {
+    "h_88f93c8f0f7def": {
+      "author": "Miká Juznik <77588816+miju04@users.noreply.github.com>"
+    }
+  }
+}
